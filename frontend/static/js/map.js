@@ -110,6 +110,18 @@ Osgende.BaseMapControl = function(settings) {
       this.href = href + map_param;
     });
   }
+  function onMapClicked(evt) {
+    obj.map.forEachFeatureAtPixel(evt.pixel, function onOpenDetails(feature, layer) {
+      var relations = feature.getProperties()['relations'];
+      console.log(feature.getProperties());
+      if(relations.length === 1)
+      {
+        var href = '#route?id=' + relations[0];
+        $.mobile.navigate(href);
+        return true;
+      }
+    });
+  }
 
   var init_view = { center: [-7.9, 34.6], zoom: 3 };
   if (Modernizr.localstorage && localStorage.getItem('position') !== null) {
@@ -175,6 +187,7 @@ Osgende.BaseMapControl = function(settings) {
                         maxZoom: 18
                       }),
   });
+  obj.map.on('click', onMapClicked);
 
   $.each(['base', 'route', 'shade'], function(i, s) {
     var lstr = s + '_layer';
