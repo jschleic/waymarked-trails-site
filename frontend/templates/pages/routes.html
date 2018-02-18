@@ -30,6 +30,8 @@
   </div>
   {% set descriptors = [(_('Mapped length'), 'mapped_length', 'length'),
                        (_('Official length'), 'official_length', 'length'),
+                       (_('From'), 'from', 'text'),
+                       (_('To'), 'to', 'text'),
                        (_('Operator'), 'operator', 'text')] %}
   <div class="dl-block">
   {% for title, field, dbtype in descriptors %}

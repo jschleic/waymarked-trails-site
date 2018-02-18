@@ -45,6 +45,17 @@ SITE_ROUTE = {
                  2 : _('regional') }
 }
 
+SITE_PUBLIC_TRANSPORT = {
+    'group_shift' : 10,
+    'groups_default' : _('other'),
+    'groups' : { 0 : _('train'),
+                 1 : _('subway'),
+                 2 : _('tram'),
+                 3 : _('bus'),
+                 4 : _('aerialway'),
+                 5 : _('ferry') }
+}
+
 SITE_SLOPE = {
     'groups' : { '1' : _('downhill'),
                  '2' : _('nordic'),

@@ -29,7 +29,7 @@ OSMC_EXAMPLE_PATH = op.join(PROJECT_DIR, 'frontend/static/img/osmc')
 MEDIA_URL = '/static'
 API_URL = '/api'
 BASE_URL = ''
-HILLSHADING_URL = '/hillshading'
+HILLSHADING_URL = 'http://openptmap.org/tiles'
 
 REPLICATION_URL='http://planet.openstreetmap.org/replication/minute/'
 REPLICATION_SIZE=50
@@ -38,6 +38,11 @@ BASEMAPS = (
   { 'id' : "osm-mapnik",
     'name' : "OSM Standard Map",
     'url' : "https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    'attribution' : ""
+  },
+  { 'id' : "osm-mapnik-bw",
+    'name' : "OSM Black and White Map",
+    'url' : "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
     'attribution' : ""
   },
 )

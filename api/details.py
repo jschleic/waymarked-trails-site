@@ -64,7 +64,7 @@ class GenericDetails(object):
         ret['mapped_length'] = int(res['length'])
         ret.add_if('official_length',
                    loctags.get_length('distance', 'length', unit='m'))
-        for tag in ('operator', 'note', 'description'):
+        for tag in ('operator', 'note', 'description', 'from', 'to'):
             ret.add_if(tag, loctags.get(tag))
         ret.add_if('url', loctags.get_url())
         ret.add_if('wikipedia', loctags.get_wikipedia_tags())

@@ -198,6 +198,13 @@ Osgende.BaseMapControl = function(settings) {
                     });
   var layers = [obj.base_layer, obj.route_layer];
 
+  obj.shade_layer = new ol.layer.Tile({
+    source: new ol.source.XYZ({ url : Osgende.HILLSHADING_URL + "/{z}/{x}/{y}.png"}),
+                                opacity: 0.0,
+                                visible: false,
+                                opaque: true
+  });
+  layers.push(obj.shade_layer);
   if (Osgende.VTILE_URL) {
     var xygrid = ol.tilegrid.createXYZ({maxZoom: 12, minZoom: 12});
     obj.vroute_layer = new ol.layer.Vector({
@@ -216,16 +223,10 @@ Osgende.BaseMapControl = function(settings) {
     });
     layers.push(obj.vroute_layer);
   }
-  obj.shade_layer = new ol.layer.Tile({
-    source: new ol.source.XYZ({ url : Osgende.HILLSHADING_URL + "/{z}/{x}/{-y}.png"}),
-                                opacity: 0.0,
-                                visible: false,
-                                opaque: true
-  });
   obj.vector_layer = new ol.layer.Vector({source: null, style: null});
   obj.vector_layer_detailedroute = new ol.layer.Vector({source: null, style: null});
 
-  layers.push(obj.shade_layer, obj.vector_layer, obj.vector_layer_detailedroute);
+  layers.push(obj.vector_layer, obj.vector_layer_detailedroute);
 
   obj.map = new ol.Map({
     layers: layers,

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{ _(l.description) }}" />
   <meta name="keywords" lang="en" content="Waymarked Trails, {{g.BASENAME}}, maps" />
-  <title>Waymarked Trails - {{ l.title }}</title>
+  <title>Public transport Routes</title>
   <link rel="shortcut icon" href="{{g.MEDIA_URL}}/img/map_{{g.BASENAME}}.ico" />
 
   <link rel="stylesheet" href="{{g.MEDIA_URL}}/contrib/jquery.mobile-1.4.5.min.css" />
@@ -23,7 +23,7 @@
 <body>
   {% block pre_header %}{% endblock %}
   <div data-role="header" data-theme="b" data-position="fixed" data-fullscreen="true" data-tap-toggle="false" style="background-image:url('{{ g.MEDIA_URL }}/img/banner_{{g.BASENAME}}.jpg')">
-    <h1 id="toggle_mobilemap_links">Waymarked Trails: {{ _(l.title) }}</h1>
+    <h1 id="toggle_mobilemap_links">Public transport routes</h1>
       {% set others = [ ('hiking', _('Hiking'), '#81AA4B'), ('cycling', _('Cycling'), '#778bf2'),
                         ('mtb', _('MTB'), '#353d6b'), ('skating', _('Inline Skating'), '#c25366'),
                         ('riding', _('Horse Riding'), '#d9c885'), ('slopes', _('Winter Sport Slopes'), '#a2a2a2')

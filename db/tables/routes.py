@@ -71,8 +71,8 @@ class RouteInfo(Routes):
             elif k == 'ref':
                 if 'name' not in outtags:
                     outtags['name'] = '[%s]' % v
-            elif k == 'network':
-                outtags['level'] = ROUTE_CONF.network_map.get(v, 35)
+            elif k == 'route' or k == 'route_master':
+                outtags['level'] = ROUTE_CONF.public_transport_map.get(v, 35)
 
         if 'name'not in outtags:
             outtags['name'] = '(%s)' % osmid
@@ -113,13 +113,12 @@ class RouteInfo(Routes):
             ROUTE_CONF.tag_filter(outtags, tags)
 
         if outtags['top'] is None:
-            if 'network' in tags:
+            if 'route' in tags or 'route_master' in tags:
                 h = self.hierarchy_table.data
                 r = self.src.data
                 sel = select([text("'a'")]).where(h.c.child == osmid)\
                                          .where(r.c.id == h.c.parent)\
                                          .where(h.c.depth == 2)\
-                                         .where(r.c.tags['network'] == tags['network'])\
                                          .limit(1)
 
                 top = self.thread.conn.scalar(sel)
